@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 def call(){
     echo 'Building Docker image'
     withCredentials([usernamePassword(credentialsId: 'bamchaarJenkinsKey',passwordVariable: 'PASS' , usernameVariable: 'USER')]) {
