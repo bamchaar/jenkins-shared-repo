@@ -7,7 +7,8 @@ def call(){
     withCredentials([usernamePassword(credentialsId: 'tcdmvkey',passwordVariable: 'PASS' , usernameVariable: 'USER')]) {
         sh 'docker build -t btcdmv/my-app:java-mvn-2.0 .'
         sh "echo $PASS | docker login -u $USER --password-stdin"
-        sh 'docker push bamchaar/my-app:java-mvn-2.0'
-        sh 'docker push tcdmv/my-app:java-mvn-2.0'
+                dir('/blob/main/docker-compose.yml') {
+                    sh 'docker-compose up -d'
+                }
     }
 }
